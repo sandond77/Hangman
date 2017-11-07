@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta charset="utf-8">
+
+<meta name=”viewport” content=”width=device-width, initial-scale=1.0”>
+
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+
+<link href="assets/css/bootswatch.css" rel="stylesheet">
+
+<!-- bootstrap jquery/javascript -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+	<title>Hangman!</title>
+</head>
+<body>
+
+<div class="container">	
+	<ul class="nav justify-content-center">
+	    <h1> Sandon's Hangman Game! </h1>
+	</ul>
+	<ul class="nav justify-content-center">
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">Reset</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">Easy Mode</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">Normal Mode</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link disabled" href="#">Hard Mode</a>
+	  </li>
+	</ul>
+</div>
+<br>
+
+<div class="container">
+	<div class="row">
+		<div class="col-6 offset-3">
+			<h3 class="text-center"> Press any key to play the game! </h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<br>
+			<br>
+			<br>
+			<br>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-12">
+			<h4 class="text-center"> Current Word </h4>
+			<br>
+			<br>
+			<div class="currentword">
+			</div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-8">
+			<h5 class="text-center"> Lives Remaining </h5>
+			<br>
+			<br>
+			<div class="hangmans">
+			</div>
+		</div>
+		<div class="col-4">
+			<h5 class="text-center"> Last Guess </h5>
+			<br>
+			<br>
+			<h5 class="text-center"> Guessed Letters </h5>
+			<br>
+			<br>
+			<div class="guessed">
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+</html>
