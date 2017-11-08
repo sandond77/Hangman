@@ -20,26 +20,35 @@ var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog"];
 
 	//random number generation from 0-5 to determine structure index
 		var seed = Math.floor((Math.random() * 6));
+    console.log("Seed is: " + seed)
 
 
 
 	// Registering the key pressed and also converts capitalized letters to lower case
 document.onkeyup = function(){
-    var lastGuess = event.key;
-    lastGuess = lastGuess.toLowerCase();
-    console.log(lastGuess);
+    var lastGuess = event.key.toLowerCase();
+    console.log("the last guess is " + lastGuess);
+  //uses boolean to check to see if the guessed letter is in the word
    	var contains = dogs[seed].includes(lastGuess);
    	var index = dogs[seed].indexOf(lastGuess)
 
-   	if (contains===true) {
-   		console.log("you got it correct");
-   		console.log(index);
-   		document.getElementById("currentword").innerHTML = "test";
-   	} else {
-   		document.getElementById("guess").innerHTML = "test";
-   	}
-}
+    for (var i = 1; i < dogs[seed].length; i++) {
+      var displayWord = dogs[seed].split();
+    }
+    var idDisplayWord = document.getElementById("currentWord");
+    idDisplayWord.innerHTML = displayWord;
+    
 
+   	// if (contains===true) {
+   	// 	console.log("you got it correct");
+   	// 	console.log(index);
+   	// 	var idCurrentWord = document.getElementById("currentWord")
+    //   idCurrentWord.innerHTML = "<p> test </p>";
+   	// } else {
+   	// 	var idGuess = document.getElementById("guess")
+    //   idGuess.innerHTML = "<p> test </p";
+   	// }
+}
 
 
 
