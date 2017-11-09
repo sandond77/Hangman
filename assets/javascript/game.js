@@ -8,6 +8,14 @@
 //if player runs out of lives, game is over.
 //if player successfully guesses word, they win. and game starts over via difficulty
 
+//Things left to do
+//link the letter check to the actual game
+//Get reset function to properly reset game
+//set up game counter
+//fix problem with multiple same letters try str.lastIndexOf?
+//alert appears before running out of guesses/alert appears before last current letter appears
+
+
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog"];
 // var mammals = ["aardvark", "elephant", "dolphin", "monkey", "rabbit", "manatee"];
@@ -18,6 +26,7 @@ var currentWord = dogs[seed].split("");
 var lives = 10;
 var idCurrentWord = document.getElementById("currentword");
 var idLives = document.getElementById("guesses-remaining")
+var idGuess = document.getElementById("guess");
 
 console.log(dogs[seed])
 
@@ -40,13 +49,13 @@ function vowelChecker(arg){
   }
 
 
-function checker(argument,arugumentwo){
-  if (argument===dogs[seed]) {
-    alert("Congrats! You have gussed the word correctly.");
-  } else if (arugumentwo === "0") {
-    console.log("you lose");
-    alert("You lose! You have run out of guesses");
-  }
+function reset(){
+  blanks = [];
+  seed = Math.floor((Math.random() * 6));
+  lives = 10;
+  underscorer(currentWord);
+  idGuess.removeChild(addGuessedLetter);
+  console.log(dogs[seed])
 }
 
 //this function creates an array of blank based on the length of the current word. The array is then converted into a string and written onto the html.
@@ -71,28 +80,35 @@ document.onkeyup = function(){
   console.log("the last guess is " + lastGuess);
   contains = currentWord.includes(lastGuess);
   index = currentWord.indexOf(lastGuess)
-
+  indexTwo = currentWord.lastIndexOf(lastGuess);  //this will check to see if there is a second index with the same letter; 
 
 //uses boolean to check to see if the guessed letter is in the word
-  for (var i = 0; i < currentWord.length; i++) {
-   	if (contains===true) {
-      //Since the displayed underscores were joined as a string, they must be split back into elements of an array for easy update of each letter. The array is then turned back into a string
-      blanks = blanks.split("");
-      blanks[index] = lastGuess;
-      blanks = blanks.join("");
-      idCurrentWord.innerHTML = blanks;
-      checker(blanks,lives);
-      break
-   	} else {
-        lives -= 1;
-        idLives.innerHTML = lives;
-        idGuess = document.getElementById("guess");
-        var addGuessedLetter = document.createTextNode(lastGuess);
-        idGuess.appendChild(addGuessedLetter);
-        checker(blanks,lives);
-        break
-   	}
+  if (contains===true) {
+    //Since the displayed underscores were joined as a string, they must be split back into elements of an array for easy update of each letter. The array is then turned back into a string
+    blanks = blanks.split("");
+    blanks[index] = lastGuess;
+    blanks[indexTwo] = lastGuess; //if there isnt a second index, this will have the same value as "index" 
+    blanks = blanks.join("");
+    idCurrentWord.innerHTML = blanks;
+
+    if (blanks===dogs[seed]) {
+    alert("Congrats! You have guessed the word correctly.");
+    // reset();
+    }
+
+    
+  }else {
+    lives -= 1;
+    idLives.innerHTML = lives;
+    var addGuessedLetter = document.createTextNode(lastGuess)
+    idGuess.appendChild(addGuessedLetter);
+    if (lives === 0) {
+    alert("You lose! You have run out of guesses");
+    // reset();
+    }
+
   }
+
 }
 
 
