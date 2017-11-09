@@ -21,9 +21,9 @@
 	<ul class="nav justify-content-center">
 	    <h1> Sandon's Hangman Game! </h1>
 	</ul>
-<!-- 	<ul class="nav justify-content-center">
+	<ul class="nav justify-content-center">
 	  <li class="nav-item">
-	    <a class="nav-link disabled" href="#">Reset</a>
+	  	<button type="button" class="btn btn-outline-primary" id="reset">Reset Round</button>
 	  </li>
 	  <li class="nav-item">
 	    <a class="nav-link disabled" href="#">Easy Mode</a>
@@ -34,7 +34,7 @@
 	  <li class="nav-item">
 	    <a class="nav-link disabled" href="#">Hard Mode</a>
 	  </li>
-	</ul> -->
+	</ul>
 </div>
 <br>
 
@@ -42,6 +42,19 @@
 	<div class="row">
 		<div class="col-6 offset-3">
 			<h3 class="text-center"> Press any key to play the game! </h3>
+			<br>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3 offset-3">
+			<h2 class="text-center"> Wins </h2>
+			<div class="text-center" id="wincount">
+			</div>
+		</div>
+		<div class="col-3">
+			<h2 class="text-center"> Losses </h2>
+			<div class="text-center" id="losecount">
+			</div>
 		</div>
 	</div>
 	<div class="row">
@@ -74,10 +87,10 @@
 </div>
 
 <!-- bootstrap jquery/javascript -->
-<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
- -->
+
 
 <script src="assets/javascript/game.js"> </script>
 

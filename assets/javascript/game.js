@@ -10,23 +10,27 @@
 
 //Things left to do
 //link the letter check to the actual game
-//Get reset function to properly reset game
-//set up game counter
-//fix problem with multiple same letters try str.lastIndexOf?
 //alert appears before running out of guesses/alert appears before last current letter appears
+//code a way to stop game from taking inputs when word has been guess or when player is out of lives
 
 
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
 var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog"];
 // var mammals = ["aardvark", "elephant", "dolphin", "monkey", "rabbit", "manatee"];
 // var animals = ["chameleon", "penguin", "jellyfish", "leopard", "salamander", "chinchila"]
-var seed = Math.floor((Math.random() * 6));
+var seed = Math.floor((Math.random() * 6)); //all my word arrays have a length of 6; could also use array.length
 var blanks = [];
 var currentWord = dogs[seed].split("");
 var lives = 10;
 var idCurrentWord = document.getElementById("currentword");
 var idLives = document.getElementById("guesses-remaining")
 var idGuess = document.getElementById("guess");
+var idWinCount=document.getElementById("wincount");
+var idLoseCount=document.getElementById("losecount");
+var lastGuess;
+var addGuessedLetter = document.createTextNode(lastGuess);
+var wins = 0;
+var losses = 0;
 
 console.log(dogs[seed])
 
@@ -48,14 +52,17 @@ function vowelChecker(arg){
     } 
   }
 
-
+//Resets game by making current word an empty array again. It then calculates a new seed to choose a different 
+//while resetting the # of lives to 10 and clears the guessed letters
 function reset(){
+  blanks.length=0;
   blanks = [];
   seed = Math.floor((Math.random() * 6));
+  console.log(dogs[seed]);
   lives = 10;
+  currentWord = dogs[seed];
   underscorer(currentWord);
-  idGuess.removeChild(addGuessedLetter);
-  console.log(dogs[seed])
+  idGuess.innerHTML = "";
 }
 
 //this function creates an array of blank based on the length of the current word. The array is then converted into a string and written onto the html.
@@ -65,15 +72,12 @@ function underscorer(input){
   }
   blanks = blanks.join("");
   idCurrentWord.innerHTML = blanks;
-  idLives = document.getElementById("guesses-remaining")
   idLives.innerHTML = lives;
 }
 
-
-underscorer(currentWord);
+underscorer(currentWord); //this will preload the word as the page is loaded
 
 	// Registering the key pressed and also converts capitalized letters to lower case
-
 document.onkeyup = function(){
   var lastGuess = event.key.toLowerCase();
   vowelChecker(lastGuess);
@@ -93,6 +97,9 @@ document.onkeyup = function(){
 
     if (blanks===dogs[seed]) {
     alert("Congrats! You have guessed the word correctly.");
+    wins += 1;
+    idWinCount.innerHTML = wins;
+    console.log("wins: "+wins);
     // reset();
     }
 
@@ -100,15 +107,19 @@ document.onkeyup = function(){
   }else {
     lives -= 1;
     idLives.innerHTML = lives;
-    var addGuessedLetter = document.createTextNode(lastGuess)
+    var addGuessedLetter = document.createTextNode(lastGuess);
     idGuess.appendChild(addGuessedLetter);
     if (lives === 0) {
     alert("You lose! You have run out of guesses");
+    losses += 1;
+    idLoseCount.innerHTML = losses;
+    console.log("loses: "+losses);
     // reset();
     }
 
   }
-
 }
+
+document.getElementById("reset").onclick = function(){reset()};
 
 
