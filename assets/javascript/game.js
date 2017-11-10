@@ -65,7 +65,9 @@ function reset(){
   idGuess.innerHTML = "";
 }
 
-//this function creates an array of blank based on the length of the current word. The array is then converted into a string and written onto the html.
+//this function creates an array of blank based on the length of the current word. 
+//The array is then converted into a string and written onto the html.
+//the spacing between the underscores is created via CSS letter spacing
 function underscorer(input){
   for (var i = 0; i < input.length; i++) {
     blanks.push("_");
@@ -79,16 +81,17 @@ underscorer(currentWord); //this will preload the word as the page is loaded
 
 	// Registering the key pressed and also converts capitalized letters to lower case
 document.onkeyup = function(){
-  var lastGuess = event.key.toLowerCase();
+  lastGuess = event.key.toLowerCase();
   vowelChecker(lastGuess);
   console.log("the last guess is " + lastGuess);
   contains = currentWord.includes(lastGuess);
-  index = currentWord.indexOf(lastGuess)
-  indexTwo = currentWord.lastIndexOf(lastGuess);  //this will check to see if there is a second index with the same letter; 
+  //this will check to see if there is a second index with the same letter; 
 
 //uses boolean to check to see if the guessed letter is in the word
   if (contains===true) {
     //Since the displayed underscores were joined as a string, they must be split back into elements of an array for easy update of each letter. The array is then turned back into a string
+    index = currentWord.indexOf(lastGuess)
+    indexTwo = currentWord.lastIndexOf(lastGuess);
     blanks = blanks.split("");
     blanks[index] = lastGuess;
     blanks[indexTwo] = lastGuess; //if there isnt a second index, this will have the same value as "index" 
@@ -113,13 +116,15 @@ document.onkeyup = function(){
     alert("You lose! You have run out of guesses");
     losses += 1;
     idLoseCount.innerHTML = losses;
-    console.log("loses: "+losses);
+    console.log("losses: "+losses);
     // reset();
     }
 
   }
 }
 
+
+//provides reset button with functionality
 document.getElementById("reset").onclick = function(){reset()};
 
 
