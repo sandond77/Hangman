@@ -9614,3 +9614,9 @@ pre {
   font-size: 20px;
 }
 
+.btn{
+  padding:10px;
+  width:75px;
+  height:75px;
+}
+

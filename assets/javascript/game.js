@@ -11,7 +11,7 @@
 //Things left to do
 //link the letter check to the actual game
 //alert appears before running out of guesses/alert appears before last current letter appears
-//code a way to stop game from taking inputs when word has been guess or when player is out of lives
+//code a way to stop game from taking inputs when word has been guess or when player is out of lives; INSERT A FLAG to check
 
 
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split('');
@@ -103,7 +103,6 @@ document.onkeyup = function(){
     wins += 1;
     idWinCount.innerHTML = wins;
     console.log("wins: "+wins);
-    // reset();
     }
 
     
@@ -112,14 +111,13 @@ document.onkeyup = function(){
     idLives.innerHTML = lives;
     var addGuessedLetter = document.createTextNode(lastGuess);
     idGuess.appendChild(addGuessedLetter);
+
     if (lives === 0) {
     alert("You lose! You have run out of guesses");
     losses += 1;
     idLoseCount.innerHTML = losses;
     console.log("losses: "+losses);
-    // reset();
-    }
-
+    } 
   }
 }
 
