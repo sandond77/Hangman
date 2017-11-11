@@ -1,9 +1,9 @@
 // Declaring global variables
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split("");
-var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog"];
-var mammals = ["gorilla", "elephant", "dolphin", "monkey", "rabbit", "manatee"];
-var animals = ["chameleon", "penguin", "jellyfish", "leopard", "kangaroo", "chinchilla"]
-var seed = Math.floor((Math.random() * 6)); //all my word arrays have a length of 6; could also use array.length
+var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog","terrier", "pug", "boxer", "chihuahua"];
+var mammals = ["gorilla", "elephant", "dolphin", "monkey", "rabbit", "manatee", "squirrel", "hedgehog","otter","raccoon"];
+var animals = ["chameleon", "penguin", "jellyfish", "brachiosaurus", "kangaroo", "chinchilla", "walrus", "human","catfish","triceratops"]
+var seed = Math.floor((Math.random() * 10)); //all my word arrays have a length of 10; could also use array.length but it would need more coding
 var blanks = [];
 var currentWord = dogs[seed].split("");
 var lives = 10;
