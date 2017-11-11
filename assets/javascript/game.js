@@ -1,12 +1,7 @@
-//Things left to do
-//check for repeating letters
-
-
-
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split("");
 var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog"];
-// var mammals = ["aardvark", "elephant", "dolphin", "monkey", "rabbit", "manatee"];
-// var animals = ["chameleon", "penguin", "jellyfish", "leopard", "salamander", "chinchila"]
+var mammals = ["aardvark", "elephant", "dolphin", "monkey", "rabbit", "manatee"];
+var animals = ["chameleon", "penguin", "jellyfish", "leopard", "salamander", "chinchila"]
 var seed = Math.floor((Math.random() * 6)); //all my word arrays have a length of 6; could also use array.length
 var blanks = [];
 var currentWord = dogs[seed].split("");
@@ -14,8 +9,8 @@ var lives = 10;
 var idCurrentWord = document.getElementById("currentword");
 var idLives = document.getElementById("guesses-remaining")
 var idGuess = document.getElementById("guess");
-var idWinCount=document.getElementById("wincount");
-var idLoseCount=document.getElementById("losecount");
+var idWinCount = document.getElementById("wincount");
+var idLoseCount = document.getElementById("losecount");
 var lastGuess;
 var addGuessedLetter = document.createTextNode(lastGuess);
 var wins = 0;
@@ -24,65 +19,14 @@ var gameActive = true;
 var isLetter;
 var usedLetter = [];
 var repeatLetter;
+var useDogs = true; 
+var useMammals
+var useAnimals
 
-//this function will check if the input is an alphabet letter when called upon
-function letterChecker(arg){
-  for (var i=0; i < alphabet.length; i++){
-    if (arg === alphabet[i]){
-      isLetter=true;
-      usedLetter[i] = arg;
-      break 
-    } else {
-      isLetter=false;
-    }               
-  }
-
-  for (var i = 1; i < usedLetter.length; i++) {
-    if (arg)
-  if (isLetter === true){
-    for (var i = 1; i < usedLetter.length; i++) {
-      usedLetter[]
-    }
-  }
-}
-
-//Resets game by making current word an empty array again. 
-//If the player attempts to start a new game after starting, they will lose a life. 
-//It then calculates a new seed to choose a different 
-//while resetting the # of lives to 10 and clears the guessed letters
-function reset(){
-  if (lives < 10){
-  losses += 1;
-  idLoseCount.innerHTML = losses;
-  }
-
-  blanks = [];
-  usedLetter = [];
-  seed = Math.floor((Math.random() * 6));
-  console.log(dogs[seed]);
-  lives = 10;
-  currentWord = dogs[seed];
-  underscorer(currentWord);
-  idGuess.innerHTML = "";
-  gameActive = true;
-}
-
-//this function creates an array of blank based on the length of the current word. 
-//The array is then converted into a string and written onto the html.
-//the spacing between the underscores is created via CSS letter spacing
-function underscorer(input){
-  for (var i = 0; i < input.length; i++) {
-    blanks.push("_");
-  }
-  blanks = blanks.join("");
-  idCurrentWord.innerHTML = blanks;
-  idLives.innerHTML = lives;
-}
 
 underscorer(currentWord); //this will preload the word as the page is loaded
 
-
-	// Registering the key pressed and also converts capitalized letters to lower case
+// Registers the key pressed and also converts capitalized letters to lower case
 document.onkeyup = function(){
   lastGuess = event.key.toLowerCase();
   letterChecker(lastGuess);
@@ -141,4 +85,84 @@ document.onkeyup = function(){
 //provides reset button with functionality
 document.getElementById("reset").onclick = function(){reset()};
 
+// //provides diffiulty buttons with functionality
+// document.getElementById("easy").onclick = function(){
+// useDogs = true;
+// useMammals = false;
+// useAnimals = false;
+// underscorer(currentWord);
+// };
 
+// document.getElementById("normal").onclick = function(){
+// useDogs = false;
+// useMammals = true;
+// useAnimals = false;
+// underscorer(currentWord);
+// };
+
+// document.getElementById("hard").onclick = function(){
+// useDogs = false;
+// useMammals = false;
+// useAnimals = true;
+// underscorer(currentWord);
+// };
+
+//this function will check if the input is an alphabet letter when called upon. 
+//If the input is an alphabet letter, it will check to make sure that the letter hasnt been used yet.
+function letterChecker(arg){
+  for (var i=0; i < alphabet.length; i++){
+    if (arg === alphabet[i]){
+      isLetter=true;
+      usedLetter.push(arg)
+      break 
+    } else {
+      isLetter=false;
+    }               
+  }
+
+  if (isLetter === true){
+    for (var i = 0; i < usedLetter.length-1; i++) {
+      if (arg === usedLetter[i]){
+        repeatLetter = true;
+        break
+      } else {
+        repeatLetter = false;
+      }
+    }
+  } 
+}
+
+//Resets game by making current word an empty array again. 
+//If the player attempts to start a new game after starting, they will lose a life. 
+//It then calculates a new seed to choose a different 
+//while resetting the # of lives to 10 and clears the guessed letters
+function reset(){
+  if (lives < 10){
+  losses += 1;
+  idLoseCount.innerHTML = losses;
+  }
+
+  blanks = [];
+  usedLetter = [];
+  seed = Math.floor((Math.random() * 6));
+  console.log(dogs[seed]);
+  lives = 10;
+  currentWord = dogs[seed];
+  underscorer(currentWord);
+  idGuess.innerHTML = "";
+  gameActive = true;
+}
+
+//this function creates an array of blank based on the length of the current word. 
+//The array is then converted into a string and written onto the html.
+//the spacing between the underscores is created via CSS letter spacing
+function underscorer(input){
+  for (var i = 0; i < input.length; i++) {
+    blanks.push("_");
+  }
+  blanks = blanks.join("");
+  idCurrentWord.innerHTML = blanks;
+  idLives.innerHTML = lives;
+}
+
+if (use)
