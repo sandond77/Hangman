@@ -54,7 +54,7 @@ function letterChecker(arg){
 
 //Resets game by making current word an empty array again. 
 //If the player attempts to start a new game after starting, they will take a loss. 
-//It then calculates a new seed to choose a different 
+//It then calculates a new seed to choose a different word
 //while resetting the # of lives to 10 and clears the guessed letters
 function reset(){
   if (lives< 10 && lives!==0 && status!=="won" ){
