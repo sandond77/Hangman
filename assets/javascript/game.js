@@ -2,13 +2,13 @@
 var alphabet = 'abcdefghijklmnopqrstuvwxyz'.split("");
 var dogs = ["husky", "corgi", "beagle", "poodle", "shiba", "bulldog","terrier", "pug", "boxer", "chihuahua"];
 var mammals = ["gorilla", "elephant", "dolphin", "monkey", "rabbit", "manatee", "squirrel", "hedgehog","otter","raccoon"];
-var animals = ["chameleon", "penguin", "jellyfish", "brachiosaurus", "kangaroo", "chinchilla", "walrus", "human","catfish","triceratops"]
-var seed = Math.floor((Math.random() * 10)); //all my word arrays have a length of 10; could also use array.length but it would need more coding. since its 100% random, the same word could be chosen upon reset
+var animals = ["chameleon", "penguin", "jellyfish", "brachiosaurus", "kangaroo", "chinchilla", "walrus", "human","catfish","triceratops"];
+var seed = Math.floor((Math.random() * 10)); //all my word arrays have a length of 10; could also use array.length but it would need more coding. Since its 100% random, the same word could be chosen upon reset
 var blanks = [];
 var currentWord = dogs[seed].split(""); //the game starts on easy mode by default
 var lives = 10;
 var idCurrentWord = document.getElementById("currentword");
-var idLives = document.getElementById("guesses-remaining")
+var idLives = document.getElementById("guesses-remaining");
 var idGuess = document.getElementById("guess");
 var idWinCount = document.getElementById("wincount");
 var idLoseCount = document.getElementById("losecount");
@@ -21,22 +21,22 @@ var isLetter;
 var usedLetter = [];
 var repeatLetter;
 var useDogs = true; 
-var useMammals
-var useAnimals
-var status
+var useMammals;
+var useAnimals;
+var status = "playing";
 var audioWin = new Audio("assets/javascript/wow.mp3")
 var audioLose = new Audio("assets/javascript/lose.mp3")
 
 //this function will check if the input is an alphabet letter when called upon. 
 //If the input is an alphabet letter, it will check to make sure that the letter hasnt been used yet.
 function letterChecker(arg){
-  for (var i=0; i < alphabet.length; i++){
+  for (var i = 0; i < alphabet.length; i++){
     if (arg === alphabet[i]){
-      isLetter=true;
-      usedLetter.push(arg)
+      isLetter = true;
+      usedLetter.push(arg);
       break 
     } else {
-      isLetter=false;
+      isLetter = false;
     }               
   }
 
@@ -57,7 +57,7 @@ function letterChecker(arg){
 //It then calculates a new seed to choose a different 
 //while resetting the # of lives to 10 and clears the guessed letters
 function reset(){
-  if (lives < 10 && lives!==0 && status !== "won" ){
+  if (lives< 10 && lives!==0 && status!=="won" ){
   losses += 1;
   idLoseCount.innerHTML = losses;
   }
@@ -113,7 +113,7 @@ document.onkeyup = function(){
   //The array is then turned back into a string
   //If there isnt a second index, then [indexTwo]=[index] 
     if (contains===true) {
-      index = currentWord.indexOf(lastGuess)
+      index = currentWord.indexOf(lastGuess);
       indexTwo = currentWord.lastIndexOf(lastGuess);
       blanks = blanks.split("");
       blanks[index] = lastGuess;
@@ -149,11 +149,11 @@ document.onkeyup = function(){
       } 
     }
   } else if (isLetter === false){
-    alert("You did not enter a letter of alphabet. Try another key")
+    alert("You did not enter a letter of alphabet. Try another key");
   } else if (gameActive === false){
-    alert("Start a new game or choose another diffiulty")
+    alert("Start a new game or choose another diffiulty");
   } else if (repeatLetter === true){
-    alert("You have already used this letter. Try another letter")
+    alert("You have already used this letter. Try another letter");
   }
 }
 
