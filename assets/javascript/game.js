@@ -57,7 +57,7 @@ function letterChecker(arg){
 //It then calculates a new seed to choose a different 
 //while resetting the # of lives to 10 and clears the guessed letters
 function reset(){
-  if (lives < 10 && status !== "won" ){
+  if (lives < 10 && lives!==0 && status !== "won" ){
   losses += 1;
   idLoseCount.innerHTML = losses;
   }
