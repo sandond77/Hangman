@@ -64,6 +64,7 @@ function reset(){
 
   blanks = [];
   usedLetter = [];
+  repeatLetter = [];
   seed = Math.floor((Math.random() * 6));
   lives = 10;
 
